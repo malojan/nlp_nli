@@ -58,3 +58,5 @@ of a prompt/hyperparameter)
 - Cheaper than GPT-3 for zero-shot
 
 ## References
+
+- [Github repo](https://github.com/MoritzLaurer/less-annotating-with-bert-nli/tree/master)
