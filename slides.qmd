@@ -1,0 +1,60 @@
+---
+title: "Using Natural Language Inference for Text Classification"
+author: "Malo Jan & Luis Sattelmayer"
+format: revealjs
+bibliography: references.bib
+---
+
+## Introduction
+
+- Presentation of @laurer_less_2023
+- Method paper on using NLI for text classification
+
+
+## What is NLI ? 
+
+- Text
+- Context sentence : premise
+- Hypothesis
+- Label : entailment, contradiction, neutral
+
+## NLI as a classification task
+
+- Classic Bert fine-tuning for text classification
+  - Transfer of the language knowledge
+  - Pre-trained model has no knowledge of the task nor the specific domain
+
+- BERT-NLI
+  - Transfer of the language & task knowledge
+  - NLI is a task that can be applied to any classification task
+  - Works well because data rich task
+
+
+## Method of the paper
+
+- Data : several manually annotated datasets in political science (CMP, CAP, CoronatNet...) of different sizes, domain, unit
+- 8 classification tasks
+- Comparison of : 
+  - SVM, Logistic Regression (tf-idf and embeddings)
+  - Deberta base and NLI
+
+## 
+
+![](results.png){width=90% height=70% fig-align=center}
+
+## Conclusion
+
+- BERT-NLI useful when little data and imbalanced
+- Less useful when large data, BERT fine-tuning similar or better
+
+## Limits
+
+- Results might depend on how the hypothesis is formulated (kind 
+of a prompt/hyperparameter)
+
+## Perspectives
+
+- Zero-shot NLI as initial sampling for active learning, find positive exemples of a rare class
+- Cheaper than GPT-3 for zero-shot
+
+## References
