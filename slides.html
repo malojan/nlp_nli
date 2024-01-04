@@ -358,8 +358,24 @@ Malo Jan &amp; Luis Sattelmayer
 <section id="introduction" class="slide level2">
 <h2>Introduction</h2>
 <ul>
-<li>Presentation of <span class="citation" data-cites="laurer_less_2023">Laurer et al. (<a href="#/limits" role="doc-biblioref" onclick="">2023</a>)</span></li>
+<li>Presentation of <span class="citation" data-cites="laurer_less_2023">Laurer et al. (<a href="#/references" role="doc-biblioref" onclick="">2023</a>)</span></li>
 <li>Method paper on using NLI for text classification</li>
+</ul>
+</section>
+<section id="context" class="slide level2">
+<h2>Context</h2>
+<ul>
+<li>Imbalanced and scarce data</li>
+</ul>
+</section>
+<section id="main-contribution-of-the-paper" class="slide level2">
+<h2>Main contribution of the paper</h2>
+<ul>
+<li><p>Two main components of transfer learning :</p></li>
+<li><p>Language representations (Usually learned during pre-training with MLM) : eg. BERT</p></li>
+<li><p>Task representations (Usually learned during fine-tuning)</p></li>
+<li><p>But BERT-base trained on MLM task not on a classification task and this layer usually deleted for fine tuning</p></li>
+<li><p>Other papers doing similar stuff : Brown et al 2020, Schicke and Schutze 2021</p></li>
 </ul>
 </section>
 <section id="what-is-nli" class="slide level2">
@@ -374,21 +390,69 @@ Malo Jan &amp; Luis Sattelmayer
 <section id="nli-as-a-classification-task" class="slide level2">
 <h2>NLI as a classification task</h2>
 <ul>
-<li>Universal task : any classification task can be seen as NLI</li>
-<li>Works well because NLI rich data class</li>
-<li>Difference between task knowledge and language knowledge</li>
-</ul>
-</section>
-<section id="method-of-the-paper" class="slide level2">
-<h2>Method of the paper</h2>
+<li>See Yin, Hay and Roth 2019 and refined Wang et al 2021</li>
+<li>Classic Bert fine-tuning for text classification
 <ul>
-<li>Data : several manually annotated datasets in political science (CMP, CAP, CoronatNet…)</li>
-<li>Comparison of :
+<li>Transfer of the language knowledge</li>
+<li>Pre-trained model has no knowledge of the task nor the specific domain</li>
+</ul></li>
+<li>BERT-NLI
 <ul>
-<li>SVM, Logistic Regression (tf-idf and embeddings)</li>
-<li>Deberta base and NLI</li>
+<li>Transfer of the language &amp; task knowledge</li>
+<li>NLI is a task that can be applied to any classification task</li>
+<li>Works well because data rich task</li>
 </ul></li>
 </ul>
+</section>
+<section id="methods-and-design" class="slide level2 smaller">
+<h2>Methods and design</h2>
+<ul>
+<li>Data : several manually annotated datasets in political science (CMP, CAP, CoronatNet…) of different sizes, domain, unit</li>
+<li>8 classification tasks</li>
+<li>Comparison of the following models :</li>
+</ul>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Model</th>
+<th>SVM tf-idf</th>
+<th>LR tf-idf</th>
+<th>SVM-embeddings</th>
+<th>LR-embeddings</th>
+<th>Deberta-base</th>
+<th>BERT-NLI</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>knowledge transfer</td>
+<td>No</td>
+<td>No</td>
+<td>Shallow</td>
+<td>Shallow</td>
+<td>Deep</td>
+<td>Deep</td>
+</tr>
+<tr class="even">
+<td>task transfer</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>Deep</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="section" class="slide level2">
 <h2></h2>
@@ -398,10 +462,40 @@ Malo Jan &amp; Luis Sattelmayer
 </figure>
 </div>
 </section>
-<section id="limits" class="slide level2 smaller scrollable">
-<h2>Limits</h2>
+<section id="conclusion" class="slide level2">
+<h2>Conclusion</h2>
 <ul>
-<li>Results might depend on how the hypothesis is formulated (kind of a prompt/hyperparameter) ## References</li>
+<li>BERT-NLI useful when little data and imbalanced</li>
+<li>Less useful when large data, BERT fine-tuning similar or better</li>
+</ul>
+</section>
+<section id="pros-ans-cons" class="slide level2">
+<h2>Pros ans cons</h2>
+<ul>
+<li>Important feature of NLI : label verbalization (similar as a prompt) :
+<ul>
+<li>Pros : Task can be express in plain language</li>
+<li>Cons : results depend on how the hypothesis is formulated (kind of ahyperparameter), same issues than In context learning</li>
+</ul></li>
+<li>Pros over ChatGpt type of zero shot/few shot learning :
+<ul>
+<li>Free/open source</li>
+</ul></li>
+<li>Results might depend on how the hypothesis is formulated (kind of a prompt/hyperparameter)</li>
+<li>Does this really solve the annotation issue ?</li>
+</ul>
+</section>
+<section id="perspectives" class="slide level2">
+<h2>Perspectives</h2>
+<ul>
+<li>Zero-shot NLI as initial sampling for active learning, find positive exemples of a rare class</li>
+<li>Cheaper than GPT-3 for zero-shot</li>
+</ul>
+</section>
+<section id="references" class="slide level2 smaller scrollable">
+<h2>References</h2>
+<ul>
+<li><a href="https://github.com/MoritzLaurer/less-annotating-with-bert-nli/tree/master">Github repo</a></li>
 </ul>
 <div class="footer footer-default">
 

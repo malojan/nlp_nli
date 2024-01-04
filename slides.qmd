@@ -7,56 +7,85 @@ bibliography: references.bib
 
 ## Introduction
 
-- Presentation of @laurer_less_2023
-- Method paper on using NLI for text classification
+-   Presentation of @laurer_less_2023
+-   Method paper on using NLI for text classification
+
+## Context
+
+-   Imbalanced and scarce data
+
+## Main contribution of the paper
+
+-   Two main components of transfer learning : 
+  - Language representations (Usually learned during pre-training with MLM) : eg. BERT
+  - Task representations (Usually learned during fine-tuning)
+
+- But BERT-base trained on MLM task not on a classification task and this layer usually deleted for fine tuning
 
 
-## What is NLI ? 
+- Other papers doing similar stuff : Brown et al 2020, Schicke and Schutze 2021
 
-- Text
-- Context sentence : premise
-- Hypothesis
-- Label : entailment, contradiction, neutral
+## What is NLI ?
+
+-   Text
+-   Context sentence : premise
+-   Hypothesis
+-   Label : entailment, contradiction, neutral
 
 ## NLI as a classification task
 
-- Classic Bert fine-tuning for text classification
-  - Transfer of the language knowledge
-  - Pre-trained model has no knowledge of the task nor the specific domain
+- See Yin, Hay and Roth 2019 and refined Wang et al 2021
+-   Classic Bert fine-tuning for text classification
+    -   Transfer of the language knowledge
+    -   Pre-trained model has no knowledge of the task nor the specific domain
+-   BERT-NLI
+    -   Transfer of the language & task knowledge
+    -   NLI is a task that can be applied to any classification task
+    -   Works well because data rich task
 
-- BERT-NLI
-  - Transfer of the language & task knowledge
-  - NLI is a task that can be applied to any classification task
-  - Works well because data rich task
+- Model : Deberta fine-tuned on 8 general purpose NLI datasets on more than 1 million examples of hypothesis context pairs
 
+## Methods and design {.smaller}
 
-## Method of the paper
+-   Data : several manually annotated datasets in political science (CMP, CAP, CoronatNet...) of different sizes, domain, unit
+-   8 classification tasks
+-   Comparison of the following models at different ammount of training data: 
 
-- Data : several manually annotated datasets in political science (CMP, CAP, CoronatNet...) of different sizes, domain, unit
-- 8 classification tasks
-- Comparison of : 
-  - SVM, Logistic Regression (tf-idf and embeddings)
-  - Deberta base and NLI
+| Model | SVM tf-idf | LR tf-idf | SVM-embeddings | LR-embeddings | Deberta-base | BERT-NLI |
+|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
+| knowledge transfer |No |No |Shallow |Shallow | Deep | Deep |
+| task transfer |No |No |No |No |No | Deep  |
 
 ## 
 
-![](results.png){width=90% height=70% fig-align=center}
+![](results.png){width="90%" height="70%" fig-align="center"}
 
 ## Conclusion
 
-- BERT-NLI useful when little data and imbalanced
-- Less useful when large data, BERT fine-tuning similar or better
+-   BERT-NLI useful when little data and imbalanced
+  - BERT-NLI can predict class without having seen a single exemple (zero shot)
+-   Less useful when large data, BERT fine-tuning similar or better
+- After 2000 exemples, convergence of performance of BERT and BERT-NLI (perform well on minority class but less well on majority class)
+- Perform less well with complex concepts (morality) than simpler (military positive)
+- Other limits : 
+  - NLI english data rich task but not necessarily in other languages even if multilingual models are available
 
-## Limits
+## Pros ans cons
 
-- Results might depend on how the hypothesis is formulated (kind 
-of a prompt/hyperparameter)
+- Important feature of NLI : label verbalization (similar as a prompt) : 
+  - Pros : Task can be express in plain language
+  - Cons : results depend on how the hypothesis is formulated (kind of ahyperparameter), same issues than In context learning
+  
+-   Pros over ChatGpt type of zero shot/few shot learning :
+    -   Free/open source
+-   Results might depend on how the hypothesis is formulated (kind of a prompt/hyperparameter)
+-   Does this really solve the annotation issue ?
 
 ## Perspectives
 
-- Zero-shot NLI as initial sampling for active learning, find positive exemples of a rare class
-- Cheaper than GPT-3 for zero-shot
+-   Zero-shot NLI as initial sampling for active learning, find positive exemples of a rare class in the first sampling round
+-   Cheaper than GPT-3 for zero-shot
 
 ## References
 
-- [Github repo](https://github.com/MoritzLaurer/less-annotating-with-bert-nli/tree/master)
+-   [Github repo](https://github.com/MoritzLaurer/less-annotating-with-bert-nli/tree/master)
