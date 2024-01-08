@@ -7,8 +7,9 @@ bibliography: references.bib
 
 ## Introduction
 
--   Presentation of @laurer_less_2023
--   Method paper on using NLI for text classification
+- Presentation of @laurer_less_2023, new ML engineer at HF. 
+- NLI : zero-shot model : HF trend
+- Method paper on using NLI for text classification
 
 ## Context
 
@@ -23,7 +24,7 @@ bibliography: references.bib
 - But BERT-base trained on MLM task not on a classification task and this layer usually deleted for fine tuning
 
 
-- Other papers doing similar stuff : Brown et al 2020, Schicke and Schutze 2021
+- Other papers on few shot learning : Brown et al 2020, Schicke and Schutze 2021
 
 ## What is NLI ?
 
@@ -34,6 +35,7 @@ bibliography: references.bib
 
 ## NLI as a classification task
 
+- @yin2020universal, @wang2021entailment
 - See Yin, Hay and Roth 2019 and refined Wang et al 2021
 -   Classic Bert fine-tuning for text classification
     -   Transfer of the language knowledge
@@ -49,7 +51,7 @@ bibliography: references.bib
 
 -   Data : several manually annotated datasets in political science (CMP, CAP, CoronatNet...) of different sizes, domain, unit
 -   8 classification tasks
--   Comparison of the following models at different ammount of training data: 
+-   Comparison of the following models at different ammount of training data [0,100,500,1000,2500,5000,1000] : 
 
 | Model | SVM tf-idf | LR tf-idf | SVM-embeddings | LR-embeddings | Deberta-base | BERT-NLI |
 |-----------|-----------|-----------|-----------|-----------|-----------|-----------|
@@ -62,12 +64,21 @@ bibliography: references.bib
 
 ## Conclusion
 
+BERT-LNI useful when : 
+
+- Little training data
+- Imbalanced data
+
+
 -   BERT-NLI useful when little data and imbalanced
+- Perform quite wellwith imbalanced data and so for many classes classification
   - BERT-NLI can predict class without having seen a single exemple (zero shot)
 -   Less useful when large data, BERT fine-tuning similar or better
 - After 2000 exemples, convergence of performance of BERT and BERT-NLI (perform well on minority class but less well on majority class)
-- Perform less well with complex concepts (morality) than simpler (military positive)
+
+If not : more advisable to use classical BERT
 - Other limits : 
+  - Perform less well with complex concepts ( traditional morality) than simpler (military positive) 
   - NLI english data rich task but not necessarily in other languages even if multilingual models are available
 
 ## Pros ans cons
