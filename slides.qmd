@@ -24,10 +24,10 @@ bibliography: references.bib
 ## Main contribution of the paper
 
 - Distinction between two components of transfer Learning
-  - Language representations (Usually learned during pre-training with MLM) : eg. BERT
-  - Task representations (Usually learned during fine-tuning)
-
-- But BERT-base trained on MLM task not on a classification task and this layer usually deleted for fine tuning
+- Language representations (Usually learned during pre-training with MLM) : eg. BERT
+- Task representations : 
+  - Usually learned during fine-tuning because BERT trained on MLM task not on a classification task
+- Use of NLI to transfer both language and task representations for text classification
 
 ## What is NLI ?
 
@@ -65,40 +65,36 @@ bibliography: references.bib
 
 ![](results.png){width="90%" height="70%" fig-align="center"}
 
-## Conclusion
+## Conclusion : pros of NLI for text classification
 
-BERT-LNI useful when : 
+- Useful when : 
+  - Little training data
+  - Imbalanced data : BERT-NLI can predict classes without having seen a single exemple (zero shot)
 
-- Little training data
-- Imbalanced data
 
 
--   BERT-NLI useful when little data and imbalanced
-- Perform quite wellwith imbalanced data and so for many classes classification
-  - BERT-NLI can predict class without having seen a single exemple (zero shot)
--   Less useful when large data, BERT fine-tuning similar or better
-- After 2000 exemples, convergence of performance of BERT and BERT-NLI (perform well on minority class but less well on majority class)
+-  Less useful when large data, BERT fine-tuning similar or better : 
+   -  After 2000 exemples : convergence of performance and then BERT outperforms BERT-NLI
 
-If not : more advisable to use classical BERT
 - Other limits : 
   - Perform less well with complex concepts ( traditional morality) than simpler (military positive) 
   - NLI english data rich task but not necessarily in other languages even if multilingual models are available
 
-## Pros ans cons
 
-- Important feature of NLI : label verbalization (similar as a prompt) : 
+## NLI & ChatGpt for zero-shot/few shot learning
+
+- NLI for text classification can be used for zero-shot/few shot learning
+- In constrast to ChatGpt :
+  -  Free/open source
+  -  Less computationally intensive
+
+- Allows label verbalization (similar as a prompt) : 
   - Pros : Task can be express in plain language
-  - Cons : results depend on how the hypothesis is formulated (kind of ahyperparameter), same issues than In context learning
-  
--   Pros over ChatGpt type of zero shot/few shot learning :
-    -   Free/open source
--   Results might depend on how the hypothesis is formulated (kind of a prompt/hyperparameter)
+  - Cons : results depend on how the hypothesis is formulated (kind of a hyperparameter), same issues than In context learning
+
 -   Does this really solve the annotation issue ?
+    -   Use of zero-shot NLI as initial model to have active learning exemples in a first annotation round ? 
 
-## Perspectives
-
--   Zero-shot NLI as initial sampling for active learning, find positive exemples of a rare class in the first sampling round
--   Cheaper than GPT-3 for zero-shot
 
 ## References
 
