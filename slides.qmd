@@ -7,24 +7,27 @@ bibliography: references.bib
 
 ## Introduction
 
-- Presentation of @laurer_less_2023, new ML engineer at HF. 
-- NLI : zero-shot model : HF trend
-- Method paper on using NLI for text classification
+- Paper : @laurer_less_2023 
+- Moritz Laurer : Phd in political science from Amsterdam, just started as Hugging Face ML engeener
+- Recently released [zero-shot models](https://huggingface.co/models?pipeline_tag=zero-shot-classification) for text classification on HF
+- Method paper on using Natural Language Inference for text classification in political science
 
 ## Context
 
--   Imbalanced and scarce data
+- Trend in using Supervised Machine Learning in social sciences
+- Important obstacles
+  - Costs of annotation : human resources, time
+  - Imbalanced data
+- Annotation costs have been reduced by fine-tuning pre-trained models
+- Increasing use of Generative models such as GPT for zero-shot/few-shot learning [@gilardi2023chatgpt ;@ollion2023chatgpt]
 
 ## Main contribution of the paper
 
--   Two main components of transfer learning : 
+- Distinction between two components of transfer Learning
   - Language representations (Usually learned during pre-training with MLM) : eg. BERT
   - Task representations (Usually learned during fine-tuning)
 
 - But BERT-base trained on MLM task not on a classification task and this layer usually deleted for fine tuning
-
-
-- Other papers on few shot learning : Brown et al 2020, Schicke and Schutze 2021
 
 ## What is NLI ?
 
