@@ -5,10 +5,10 @@ format: revealjs
 bibliography: references.bib
 ---
 
-## Introduction
+## Introduction {.smaller}
 
 - Paper : @laurer_less_2023 
-- Moritz Laurer : Phd in political science from Amsterdam, just started as Hugging Face ML engeener
+- Moritz Laurer : PhD in political science from Amsterdam, just started as Hugging Face ML engineer
 - Recently released [zero-shot models](https://huggingface.co/models?pipeline_tag=zero-shot-classification) for text classification on HF
 - Method paper on using Natural Language Inference for text classification in political science
 
@@ -29,14 +29,43 @@ bibliography: references.bib
   - Usually learned during fine-tuning because BERT trained on MLM task not on a classification task
 - Use of NLI to transfer both language and task representations for text classification
 
-## What is NLI ?
+## What is NLI ? {.smaller}
 
--   Text
--   Context sentence : premise
--   Hypothesis
--   Label : entailment, contradiction, neutral
+- **N**atural **L**anguage **I**nference (also called Recognizing Textual Entailment; RTE)
+- It consists of two components: 
+  1. Context (Premise)
+  2. Hypothesis
 
-## NLI as a classification task
+- The task is to determine whether the hypothesis is true or false given the premise
+- In NLI terms: 
+  - hypothesis corresponds with the premise: *entailment*
+  - hypothesis is the opposite of the premise: *contradiction*
+  - hypothesis is neither the same nor the opposite of the premise: *neutral*
+  
+## Simple NLI example {.smaller}
+
+:::{.fragment .nonincremental}
+- Context: *The cat is on the mat*
+- Hypothesis: *The cat is on sitting in the garden*
+- Label: **contradiction**
+:::
+
+:::{.fragment .nonincremental}
+- Context: *The cat is on the mat*
+- Hypothesis: *The cat is sitting on a piece of furniture*
+
+- Label: **entailment**
+:::
+
+:::{.fragment .nonincremental}
+- Context: *The cat is on the mat*
+- Hypothesis: *I love NLI and I want to try it out immediately*
+
+- Label: **neutral**
+:::
+
+
+## NLI as a classification task {.smaller}
 
 - @yin2020universal, @wang2021entailment
 - See Yin, Hay and Roth 2019 and refined Wang et al 2021
@@ -65,7 +94,7 @@ bibliography: references.bib
 
 ![](results.png){width="90%" height="70%" fig-align="center"}
 
-## Conclusion : pros of NLI for text classification
+## Conclusion : pros of NLI for text classification {.smaller}
 
 - Useful when : 
   - Little training data
