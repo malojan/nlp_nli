@@ -19,7 +19,7 @@ bibliography: references.bib
   - Costs of annotation : human resources, time
   - Imbalanced data
 - Annotation costs have been reduced by fine-tuning pre-trained models
-- Increasing use of Generative models such as GPT for zero-shot/few-shot learning [@gilardi2023chatgpt ;@ollion2023chatgpt]
+- Increasing use of Generative models such as GPT for zero-shot/few-shot learning [@gilardi2023chatgpt; @ollion2023chatgpt]
 
 ## Main contribution of the paper
 
@@ -32,6 +32,10 @@ bibliography: references.bib
 ## What is NLI ? {.smaller}
 
 - **N**atural **L**anguage **I**nference (also called Recognizing Textual Entailment; RTE)
+
+- Laurer's approach is based on the @yin-etal-2019-benchmarking and @wang2021entailment approach of leveraging NLI 
+  - making use of the language *and* task knowledge of a pre-trained transformer model
+
 - It consists of two components: 
   1. Context (Premise)
   2. Hypothesis
@@ -64,20 +68,26 @@ bibliography: references.bib
 - Label: **neutral**
 :::
 
+- Hypothesis does not mean finding the objective truth to a scientific hypothesis
+  - it's more about determining whether the context string entails the hypothesis string
+
 
 ## NLI as a classification task {.smaller}
 
-- @yin2020universal, @wang2021entailment
-- See Yin, Hay and Roth 2019 and refined Wang et al 2021
--   Classic Bert fine-tuning for text classification
-    -   Transfer of the language knowledge
-    -   Pre-trained model has no knowledge of the task nor the specific domain
--   BERT-NLI
-    -   Transfer of the language & task knowledge
-    -   NLI is a task that can be applied to any classification task
-    -   Works well because data rich task
+- See @yin-etal-2019-benchmarking; more refined @wang2021entailment for prior work on NLI as a classification task
+- NLI can be used as a classification task and is, according to Laurer, *universally* applicable to any classification task
+- Classic Bert fine-tuning for text classification
+    - Transfer of the language knowledge
+    - Pre-trained model has no knowledge of the task nor the specific domain
+- BERT-NLI
+    - Transfer of the *language & task knowledge*
+    - Works well because data rich task
 
 - Model : Deberta fine-tuned on 8 general purpose NLI datasets on more than 1 million examples of hypothesis context pairs
+
+
+## Comparison classification BERT/NLI-BERT {.smaller}
+![](laurer_BERT-NLi-BERT-comparison){width="90%" height="70%" fig-align="center"}
 
 ## Methods and design {.smaller}
 
