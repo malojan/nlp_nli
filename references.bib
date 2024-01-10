@@ -44,3 +44,34 @@
     pages = "3914--3923",
     abstract = "Zero-shot text classification (0Shot-TC) is a challenging NLU problem to which little attention has been paid by the research community. 0Shot-TC aims to associate an appropriate label with a piece of text, irrespective of the text domain and the aspect (e.g., topic, emotion, event, etc.) described by the label. And there are only a few articles studying 0Shot-TC, all focusing only on topical categorization which, we argue, is just the tip of the iceberg in 0Shot-TC. In addition, the chaotic experiments in literature make no uniform comparison, which blurs the progress. This work benchmarks the 0Shot-TC problem by providing unified datasets, standardized evaluations, and state-of-the-art baselines. Our contributions include: i) The datasets we provide facilitate studying 0Shot-TC relative to conceptually different and diverse aspects: the {``}topic{''} aspect includes {``}sports{''} and {``}politics{''} as labels; the {``}emotion{''} aspect includes {``}joy{''} and {``}anger{''}; the {``}situation{''} aspect includes {``}medical assistance{''} and {``}water shortage{''}. ii) We extend the existing evaluation setup (label-partially-unseen) {--} given a dataset, train on some labels, test on all labels {--} to include a more challenging yet realistic evaluation label-fully-unseen 0Shot-TC (Chang et al., 2008), aiming at classifying text snippets without seeing task specific training data at all. iii) We unify the 0Shot-TC of diverse aspects within a textual entailment formulation and study it this way.",
 }
+@inproceedings{schick-schutze-2020-exploiting,
+    title = "Exploiting Cloze-Questions for Few-Shot Text Classification and Natural Language Inference",
+    author = "Schick, Timo  and
+      Sch{\"u}tze, Hinrich",
+    booktitle = "Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing (EMNLP)",
+    month = nov,
+    year = "2020",
+    address = "Online",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2020.emnlp-main.20",
+    doi = "10.18653/v1/2020.emnlp-main.20",
+    pages = "253--267",
+    abstract = "Some NLP tasks can be solved in a fully unsupervised fashion by providing a pretrained language model with {``}task descriptions{''} in natural language (e.g., Radford et al., 2019). While this approach underperforms its supervised counterpart, we show in this work that the two ideas can be combined: We introduce Pattern-Exploiting Training (PET), a semi-supervised training procedure that reformulates input examples as cloze-style phrases to help language models understand a given task. These phrases are then used to assign soft labels to a large set of unlabeled examples. Finally, standard supervised training is performed on the resulting training set. For several tasks and languages, PET outperforms supervised training and strong semi-supervised approaches in low-resource settings by a large margin.",
+}
+@inproceedings{schick-schutze-2021-exploiting,
+    title = "Exploiting Cloze-Questions for Few-Shot Text Classification and Natural Language Inference",
+    author = {Schick, Timo  and
+      Sch{\"u}tze, Hinrich},
+    editor = "Merlo, Paola  and
+      Tiedemann, Jorg  and
+      Tsarfaty, Reut",
+    booktitle = "Proceedings of the 16th Conference of the European Chapter of the Association for Computational Linguistics: Main Volume",
+    month = apr,
+    year = "2021",
+    address = "Online",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2021.eacl-main.20",
+    doi = "10.18653/v1/2021.eacl-main.20",
+    pages = "255--269",
+    abstract = "Some NLP tasks can be solved in a fully unsupervised fashion by providing a pretrained language model with {``}task descriptions{''} in natural language (e.g., Radford et al., 2019). While this approach underperforms its supervised counterpart, we show in this work that the two ideas can be combined: We introduce Pattern-Exploiting Training (PET), a semi-supervised training procedure that reformulates input examples as cloze-style phrases to help language models understand a given task. These phrases are then used to assign soft labels to a large set of unlabeled examples. Finally, standard supervised training is performed on the resulting training set. For several tasks and languages, PET outperforms supervised training and strong semi-supervised approaches in low-resource settings by a large margin.",
+}

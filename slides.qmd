@@ -76,6 +76,11 @@ bibliography: references.bib
 
 - See @yin-etal-2019-benchmarking; more refined @wang2021entailment for prior work on NLI as a classification task
 - NLI can be used as a classification task and is, according to Laurer, *universally* applicable to any classification task
+- NLI leverages the capability of models to verbalize labels (see @schick-schutze-2021-exploiting)
+  - standard classifiers never see the description of classes and take guesses the classification task based on training data and the numbered labels
+  - NLI classifiers use their knowledge of prior language representation to better and more quickly understand the task and classes
+
+## NLI as a classification task 
 - Classic Bert fine-tuning for text classification
     - Transfer of the language knowledge
     - Pre-trained model has no knowledge of the task nor the specific domain
